@@ -8,31 +8,32 @@
 
 int main(int argc, char *args[])
 {
-	int n;
-	char read_line[100];
+	char *buf = NULL;
+	size_t count = 0;
+	ssize_t read_line;
 	FILE *fd;
 
 	if (argc != 2)
 	{
-		fprintf(stderr, "Usage: %s <file>\n", args[0]);
+		fprintf(stderr, "Usage: factors <file>\n");
 		exit(EXIT_FAILURE);
 	}
+	fd = fopen(args[1], "r");
 
-	fd  = fopen(args[0], "r");
 	if (fd == NULL)
 	{
-		perror("Error: can't open file\n");
+		fprintf(stderr, "Error can't open file %s\n", args[1]);
 		exit(EXIT_FAILURE);
 	}
+	read_line = getline(&buf, &count, fd);
 
-	while (fgets(read_line, sizeof(read_line), fd))
+	while (read_line != -1)
 	{
-		n = atoi(read_line);
-		if (n != 0)
-		{
-			factorize(n);
-		}
+		factorize(buf);
+
+		read_line = getline(&buf, &count, fd);
 	}
+	free(buf);
 	fclose(fd);
 	return (0);
 }

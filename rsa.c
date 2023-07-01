@@ -18,7 +18,7 @@ int main(int argc, char *args[])
 		exit(EXIT_FAILURE);
 	}
 
-	fd  = fopen(args[0], "r");
+	fd  = fopen(args[1], "r");
 	if (fd == NULL)
 	{
 		perror("Error: can't open file\n");

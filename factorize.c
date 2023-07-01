@@ -4,15 +4,17 @@
  * @n: prime numbers
  */
 
-void factorize(int n)
+void factorize(char *buf)
 {
-        int i;
+        int i, n;
 
-        for (i = 2; i <= sqrt(n); i++)
+	n = atoi(buf);
+
+        for (i = 2; i < n; i++)
         {
                 if (n % i == 0)
                 {
-                        printf("%d = %d * %d\n", n, i, n / i);
+                        printf("%d=%d * %d\n", n, i, n / i);
                 }
         }
 }
