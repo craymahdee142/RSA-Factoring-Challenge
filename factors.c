@@ -3,7 +3,7 @@
  * main - Entry
  * @argc: argument count
  * @args: aryguments vactor
- * Return: 0 
+ * Return: 0
  */
 
 int main(int argc, char *args[])
@@ -12,6 +12,7 @@ int main(int argc, char *args[])
 	size_t count = 0;
 	ssize_t read_line;
 	FILE *fd;
+	int n = 0;
 
 	if (argc != 2)
 	{
@@ -29,7 +30,8 @@ int main(int argc, char *args[])
 
 	while (read_line != -1)
 	{
-		factorize(buf);
+		n = atoi(buf);
+		factorize(n);
 
 		read_line = getline(&buf, &count, fd);
 	}

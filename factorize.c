@@ -4,17 +4,19 @@
  * @n: prime numbers
  */
 
-void factorize(char *buf)
+void factorize(int n)
 {
-        int i, n;
+	int i = 2, count;
 
-	n = atoi(buf);
+	while (1)
+	{
+		if (n % i == 0)
+		{
+			count = n / i;
 
-        for (i = 2; i < n; i++)
-        {
-                if (n % i == 0)
-                {
-                        printf("%d=%d * %d\n", n, i, n / i);
-                }
-        }
+			printf("%d=%d*%d\n", n, count, i);
+			break;
+		}
+		i++;
+	}
 }

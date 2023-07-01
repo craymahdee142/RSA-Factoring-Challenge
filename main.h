@@ -7,6 +7,6 @@
 #include <unistd.h>
 #include <math.h>
 
-void factorize(char *buf);
+void factorize(int n);
 
 #endif
